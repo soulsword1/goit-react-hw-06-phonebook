@@ -1,22 +1,23 @@
-import PropTypes from 'prop-types';
+import { setFilter } from 'redux/filterSlice';
+import { useDispatch } from 'react-redux';
 import { FilterForm, FilterLabel, FilterInput } from './Filter.styled';
 
-export default function Filter({ onInput }) {
+export default function Filter() {
+  const dispatch = useDispatch();
+  const handleFilterChange = e => {
+    const inputVal = e.target.value;
+    dispatch(setFilter(inputVal));
+  };
   return (
     <FilterForm>
       <FilterLabel>
         Search:
         <FilterInput
-          type="tel"
-          name="search"
+          name="contactsFilter"
           title=""
-          onChange={onInput}
+          onChange={handleFilterChange}
         />
       </FilterLabel>
     </FilterForm>
   );
 }
-
-Filter.propTypes = {
-  onInput: PropTypes.func,
-};

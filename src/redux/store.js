@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { createStore, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer,FLUSH,
     REHYDRATE,
     PAUSE,
@@ -32,5 +32,4 @@ export const store = configureStore({
       }),
   })
 
-// export const store = createStore(persistedReducer);
 export const persistor = persistStore(store);
